@@ -9,17 +9,20 @@
 </head>
 <style>
     * {
-        margin: 0;
-        padding: 0;
-        background-color: cornsilk;
+        margin: auto;
+        padding: auto;
+        background-color: azure;
         ;
     }
 
     table {
-        width: 100%;
+        text-align: center;
+        width: 90%;
+        font: bold;
     }
 
     h1 {
+        line-height: 90px;
         text-align: center;
         font-size: 20px;
         font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
@@ -27,7 +30,27 @@
     }
 
     #top {
-        font-size: 30px;
+        text-align: right;
+        font-size: 25px;
+    }
+
+    a {
+        float: right;
+        background-color: cornsilk;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 20px;
+        width: 100px;
+        height: 50px;
+        padding: 5px;
+        border-radius: 15px;
+        border-color: black;
+
+        border: 3px solid #412b2e;
+        text-decoration: none;
+        background-color: ghostwhite;
+        color: rgb(17, 17, 17);
+        line-height: 60px;
+
     }
 </style>
 
