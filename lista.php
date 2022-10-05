@@ -16,39 +16,34 @@
     }
 
     table {
-        text-align: center;
+        text-align:inherit;
         width: 90%;
         font: bold;
+        font-size: 20px;
     }
 
     h1 {
         line-height: 90px;
         text-align: center;
-        font-size: 20px;
+        font-size: 30px;
         font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
         padding: 10px;
     }
 
     #top {
         text-align: right;
-        font-size: 25px;
+        font-size: 20px;
     }
 
     a {
         float: right;
-        background-color: cornsilk;
-font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        background-color: gainsboro;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         font-size: 20px;
-        width: 100px;
-        height: 50px;
-        padding: 5px;
-        border-radius: 15px;
-        border-color: black;
-
-        border: 3px solid #412b2e;
         text-decoration: none;
-        background-color: ghostwhite;
+        border-radius: 30px;
         color: rgb(17, 17, 17);
+        border-style: solid;
         line-height: 60px;
 
     }
@@ -67,7 +62,7 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         </thead>
         <tbody>
             <?php
-            $conexao    = new PDO('mysql:local=localhost;port=3306;dbname=marcacarro', 'root', '');
+            $conexao    = new PDO('mysql:local=localhost;port=3308;dbname=marcacarro', 'root', '');
             $sql        = "  SELECT * FROM cadastro;";
             $dataset    = $conexao->query($sql);
             $resultset  = $dataset->fetchAll();

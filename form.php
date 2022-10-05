@@ -1,11 +1,10 @@
 <?php
-if (isset($_GET['id'])){
-    $id      = $_GET['id'];
+    $id      = isset($_GET['id']) ? $_GET['id']: '';
     $opcao   = 'atualizar';
+  if  ($id !=''){
 
-
-$conexao    = new PDO('mysql:local=localhost;port=3306;dbname=marcacarro', 'root', '');
-$sql        = "SELECT * FROM cadastro WHERE id ={$id}";
+$conexao    = new PDO('mysql:local=localhost;port=3308;dbname=marcacarro', 'root', '');
+$sql        = "SELECT * FROM cadastro WHERE id ={$id};";
 $dataset    = $conexao->query($sql);
 $resultset  = $dataset->fetch();
 
@@ -31,7 +30,7 @@ $descricao  =$resultset['descricao'];
     *{
         margin: 0;
         padding: 0;
-        background-color: cornsilk;
+        background-color: azure ;
     }
     .legend {
         font-family: Georgia, 'Times New Roman', Times, serif;
@@ -48,7 +47,6 @@ $descricao  =$resultset['descricao'];
     }
 
     form {
-
         position: absolute;
         top: 50%;
         left: 50%;
