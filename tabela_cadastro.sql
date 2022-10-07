@@ -1,5 +1,10 @@
-CREATE TABLE cadastro(
+CREATE TABLE marca(
 	id  		INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    descricao	VARCHAR(100) NOT NULL
+    nome  		VARCHAR(100) NOT NULL
+    
 ) ENGINE = InnoDB;
 
+
+SELECT * FROM marca;
+
+INSERT INTO marca (nome) VALUE ('Chevrolet')

@@ -5,7 +5,7 @@
 
 $id          = isset($_POST['id'])   ? $_POST['id'] :  $_GET['id'];
 $opcao       = isset($_POST['opcao']) ? $_POST['opcao'] :$_GET['opcao'];
-$descricao   = isset($_POST['descricao']) ? $_POST['descricao'] : '';
+$descricao   = isset($_POST['nome']) ? $_POST['nome'] : '';
 
 
 
@@ -23,17 +23,17 @@ $conexao    = new PDO('mysql:host=localhost;port=3308;dbname=marcacarro', 'root'
 
 // Instruçao SQL de inserção
 if ($opcao == 'inserir') {
-    $sql        = "INSERT INTO cadastro (descricao) VALUE ('{$descricao}');";
+    $sql        = "INSERT INTO marca (nome) VALUE ('{$descricao}');";
     $mensagem   = "<script>alert('O campo Descição foi inserido.');</script>";
 }
 // Instruçao SQL de atualização 
 else if ($opcao == 'atualizar') {
-    $sql        = "UPDATE cadastro SET descricao ='{$descricao}'WHERE id ={$id};";
+    $sql        = "UPDATE marca SET nome ='{$descricao}'WHERE id ={$id};";
     $mensagem   = "<script>alert('O campo Descrição foi atualizado.');</script>";
 }
 // Instruçao SQL de excluir
 else if($opcao == 'excluir'){
-    $sql        = "DELETE FROM cadastro WHERE id ={$id};";
+    $sql        = "DELETE FROM marca WHERE id ={$id};";
     $mensagem   ="<script>alert('Excluido com Sucesso.');</script>";
 }else{
     echo'Nenhuma opção selecionada.<a href="#" onclick="history.back()">Voltar</a>';

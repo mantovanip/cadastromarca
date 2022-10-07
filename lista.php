@@ -63,14 +63,14 @@
         <tbody>
             <?php
             $conexao    = new PDO('mysql:local=localhost;port=3308;dbname=marcacarro', 'root', '');
-            $sql        = "  SELECT * FROM cadastro;";
+            $sql        = "  SELECT * FROM marca;";
             $dataset    = $conexao->query($sql);
             $resultset  = $dataset->fetchAll();
 
             foreach ($resultset as $row) {
                 echo '    <tr>
                     <th >' . $row['id'] . '</th>
-                    <th >' . $row['descricao'] . '</th>
+                    <th >' . $row['nome'] . '</th>
                     <td>
                     <a href="form.php?id=' . $row['id'] . '">Editar</a>
                     </td>

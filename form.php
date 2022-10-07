@@ -4,11 +4,11 @@
   if  ($id !=''){
 
 $conexao    = new PDO('mysql:local=localhost;port=3308;dbname=marcacarro', 'root', '');
-$sql        = "SELECT * FROM cadastro WHERE id ={$id};";
+$sql        = "SELECT * FROM marca WHERE id ={$id};";
 $dataset    = $conexao->query($sql);
 $resultset  = $dataset->fetch();
 
-$descricao  =$resultset['descricao'];
+$descricao  =$resultset['nome'];
 }else{
    
     $opcao  ='inserir';
@@ -104,11 +104,11 @@ $descricao  =$resultset['descricao'];
 
         <legend class="legend"> Cadastro de Marca</legend>
         <div>
-            <label for="descricao">Descrição: </label>
+            <label for="nome">Descrição: </label>
             <input type="hidden" name="opcao" id="opcao" value="<?=$opcao?>" />
             <input type="hidden" name="id" id="id" value="<?=$id?>" />
 
-            <input type="text" id="descricao" placeholder="Digite a Marca" name="descricao" value="<?=$descricao?>"/>
+            <input type="text" id="nome" placeholder="Digite a Marca" name="nome" value="<?=$descricao?>"/>
         </div>
 
 
