@@ -11,3 +11,5 @@ VALUES
 ('Gás'),
 ('Flex ( Gasolina | Álcool)'),
 ('Flex ( Gasolina | Gás )');
+
+SELECT * FROM tipo_combustivel;

@@ -8,3 +8,5 @@ VALUES
 ('Carro'),
 ('Moto'),
 ('caminhão');
+
+SELECT * FROM tipo_veiculo;

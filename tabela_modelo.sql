@@ -14,6 +14,6 @@ CREATE TABLE modelo(
 ) ENGINE = InnoDB;
 
 INSERT INTO modelo (nome_modelo,marca,ano)
-VALUES('Onix',1,2022);
+VALUES('Corsa',1,2001);
 
 SELECT * FROM modelo;
