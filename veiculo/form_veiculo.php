@@ -3,10 +3,8 @@
     $modelo = '';
     $combustivel = '';
     $chassi = '';
-    $potencia = '';
     $motorizacao = '';
-    $lotacao = '';
-    $ano_modelo = '';
+    $ano = '';
     $ano_fabricacao = '';
     $opcao = 'inserir';
     $conexao = new PDO('mysql:host=localhost;port=3308;dbname=marcacarro','root','');
@@ -14,14 +12,13 @@
 
     if (isset($_GET['id'])){
         $id = $_GET['id'];
-        $op = 'atualizar';
+        $opcao = 'atualizar';
         $sql = "SELECT * FROM veiculo WHERE id = {$id}";
         $dataset = $conexao->query($sql);
         $rs = $dataset->fetch();
         $modelo = $rs['modelo'];
         $tipo_combustivel = $rs['tipo_combustivel'];
         $chassi = $rs['chassi'];
-        $potencia = $rs['potencia'];
         $motorizacao = $rs['motorizacao'];
         $ano_fabricacao = $rs['ano_fabricacao'];
         
@@ -40,7 +37,7 @@
     <form action="salvar_veiculo.php" method="POST">
         <fieldset>
             <legend>Cadastro de Veículo</legend>
-            <input type="hidden" name="op" id="op" value="<?=$op?>"/>
+            <input type="hidden" name="opcao" id="opcao" value="<?=$opcao?>"/>
             <input type="hidden" name="id" id="id" value="<?=$id?>"/>
             <div>
                 <br/>
@@ -51,7 +48,7 @@
                         $dataset    = $conexao->query($sql);
                         $resultset  = $dataset->fetchAll();
                         foreach($resultset as $row){
-                        echo '<option value="'.$row['id'].'">'.$row['descricao'].'</option>';
+                        echo '<option value="'.$row['id'].'">'.$row['nome_modelo'].'</option>';
                         }
                     ?>
                 </select><br>
@@ -65,21 +62,21 @@
                         $dataset    = $conexao->query($sql);
                         $resultset  = $dataset->fetchAll();
                         foreach($resultset as $row){
-                        echo '<option value="'.$row['id'].'">'.$row['descricao'].'</option>';
+                        echo '<option value="'.$row['id'].'">'.$row['tipo'].'</option>';
                         }
                     ?>
                 </select><br>
             </div>
             <div>
                 <br/>
-                <label for="combustivel">Combustivel:</label>
-                <select name="combustivel">
+                <label for="tipo_combustivel">Combustivel:</label>
+                <select name="tipo_combustivel">
                     <?php
-                        $sql = 'SELECT * FROM combustivel;';
+                        $sql = 'SELECT * FROM tipo_combustivel;';
                         $dataset    = $conexao->query($sql);
                         $resultset  = $dataset->fetchAll();
                         foreach($resultset as $row){
-                        echo '<option value="'.$row['id'].'">'.$row['descricao'].'</option>';
+                        echo '<option value="'.$row['id'].'">'.$row['tipo'].'</option>';
                         }
                     ?>
                 </select><br>
@@ -90,31 +87,13 @@
                 <br/>
                 <input type="text" id="chassi" name="chassi" maxlength="17" value="<?=$chassi?>"/>
             </div>
-            <div>
+                 <div>
                 <br/>
-                <label for="cor">Cor</label>
+                <label for="motorizacao">Motorizacao</label>
                 <br/>
-                <input type="text" id="cor" name="cor" value="<?=$cor?>"/>
+                <input type="number" id="motorizacao" min="0" max="999" name="motorizacao" value="<?=$motorizacao?>"/>
             </div>
-            <div>
-                <br/>
-                <label for="potencia">Potência</label>
-                <br/>
-                <input type="number" id="potencia" min="0" max="3000" name="potencia" value="<?=$potencia?>"/>
-            </div>
-            <div>
-                <br/>
-                <label for="cilindrada">Cilindrada</label>
-                <br/>
-                <input type="number" id="cilindrada" min="0" max="9999" name="cilindrada" value="<?=$cilindrada?>"/>
-            </div>
-            <div>
-                <br/>
-                <label for="lotacao">Passageiros</label>
-                <br/>
-                <input type="number" id="lotacao" min="0" max="999" name="lotacao" value="<?=$lotacao?>"/>
-            </div>
-            <div>
+                 <div>
                 <br/>
                 <label for="ano_fabricacao">Ano Fabricacao</label>
                 <br/>
@@ -122,9 +101,9 @@
             </div>
             <div>
                 <br/>
-                <label for="ano_modelo">Ano Modelo</label>
+                <label for="ano">Ano Modelo</label>
                 <br/>
-                <input type="number" id="ano_modelo" min="1800" max="2050" name="ano_modelo" value="<?=$ano_modelo?>"/>
+                <input type="number" id="ano" min="1800" max="2050" name="ano" value="<?=$ano?>"/>
             </div>
             <div>
                 <br/>

@@ -2,14 +2,14 @@
 #Verifica e armazena as variaveis via POST OU GET
 $id = isset($_POST['id']) ? $_POST['id'] : $_GET['id'];
 $op = isset($_POST['op']) ? $_POST['op'] : $_GET['op'];
-$modelo = isset($_POST['modelo']) ? $_POST['modelo'] : '';
+$nome_modelo = isset($_POST['nome_modelo']) ? $_POST['nome_modelo'] : '';
 $tipo_veiculo = isset($_POST['tipo_veiculo']) ? $_POST['tipo_veiculo'] : '';
 $combustivel = isset($_POST['combustivel']) ? $_POST['combustivel'] : '';
 $chassi = isset($_POST['chassi']) ? $_POST['chassi'] : '';
-$cor = isset($_POST['cor']) ? $_POST['cor'] : '';
-$potencia = isset($_POST['potencia']) ? $_POST['potencia'] : '';
+
+
 $cilindrada = isset($_POST['cilindrada']) ? $_POST['cilindrada'] : '';
-$lotacao = isset($_POST['lotacao']) ? $_POST['lotacao'] : '';
+
 $ano_fabricacao = isset($_POST['ano_fabricacao']) ? $_POST['ano_fabricacao'] : '';
 $ano_modelo = isset($_POST['ano_modelo']) ? $_POST['ano_modelo'] : '';
 
