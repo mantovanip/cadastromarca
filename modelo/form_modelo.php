@@ -28,7 +28,7 @@
     <form action="salvar_modelo.php" method="POST">
         <fieldset>
             <legend>Cadastro de Modelo</legend>
-            <input type="hidden" name="op" id="op" value="<?=$opcao?>"/>
+            <input type="hidden" name="opcao" id="opcao" value="<?=$opcao?>"/>
             <input type="hidden" name="id" id="id" value="<?=$id?>"/>
             <div>
                 <br/>

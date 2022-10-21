@@ -8,8 +8,8 @@
     $lotacao = '';
     $ano_modelo = '';
     $ano_fabricacao = '';
-    $op = 'inserir';
-    $conexao = new PDO('mysql:host=localhost;port=3306;dbname=concessionaria','root','123456');
+    $opcao = 'inserir';
+    $conexao = new PDO('mysql:host=localhost;port=3308;dbname=marcacarro','root','');
 
 
     if (isset($_GET['id'])){
@@ -19,13 +19,10 @@
         $dataset = $conexao->query($sql);
         $rs = $dataset->fetch();
         $modelo = $rs['modelo'];
-        $combustivel = $rs['combustivel'];
+        $tipo_combustivel = $rs['tipo_combustivel'];
         $chassi = $rs['chassi'];
-        $cor = $rs['cor'];
         $potencia = $rs['potencia'];
         $motorizacao = $rs['motorizacao'];
-        $lotacao = $rs['lotacao'];
-        $ano_modelo = $rs['ano_modelo'];
         $ano_fabricacao = $rs['ano_fabricacao'];
         
     }
