@@ -20,11 +20,8 @@
                 <th class="text-left">Modelo</th>
                 <th class="text-left">Tipo</th>
                 <th class="text-left">Combustível</th>
-                <th class="text-left">Chassi</th>
-                <th class="text-left">Cor</th>
-                <th class="text-left">Potência</th>
-                <th class="text-left">Cilindrada</th>
-                <th class="text-left">Nº Passageiros</th>
+                <th class="text-left">Chassi</th>             
+                <th class="text-left">Motorização</th>               
                 <th class="text-left">Ano</th>
                 <th>Editar</th>
                 <th>Excluir</th>
@@ -35,15 +32,15 @@
                 $conexao = new PDO('mysql:host=localhost;port=3308;dbname=marcacarro','root','');
                 $sql = " SELECT *,
                 (SELECT mc.nome FROM marca mc WHERE m.marca = mc.id) 'mc',
-                (SELECT t.descricao FROM tipo_veiculo t WHERE t.id = v.tipo_veiculo) 'tipo',
-                m.descricao AS 'mod',
-                c.descricao AS 'comb',
+                (SELECT t.modelo FROM tipo_veiculo t WHERE t.id = v.tipo_veiculo) 'tipo',
+                m.modelo AS 'mod',
+                c.modelo AS 'comb',
                 v.id AS 'cod'
                 FROM veiculo v
-                INNER JOIN modelo m ON m.id = v.modelo
-                INNER JOIN combustivel c ON c.id = v.combustivel";
+                INNER JOIN tipo_veiculo m ON m.id = v.tipo;
+                INNER JOIN tipo_combustivel c ON c.id = v.tipo";
                 $dataset = $conexao->query($sql);
-                $rs = $dataset->fetchAll();
+                $rs = $dataset->fetchAll($sql);
                 foreach($rs as $row){
                     echo '
                         <tr>
@@ -54,14 +51,13 @@
                             <td>'.$row['chassi'].'</td>
                             <td>'.$row['cor'].'</td>
                             <td>'.$row['potencia'].'</td>
-                            <td>'.$row['cilindrada'].'</td>
-                            <td>'.$row['lotacao'].'</td>
-                            <td>'.$row['ano_fabricacao'].'/'.$row['ano_modelo'].'</td>
+                            <td>'.$row['motorizacao'].'</td>
+                            <td>'.$row['ano_fabricacao'].'/'.$row['ano_fabricacao'].'</td>
                             <td class="text-center">
                                 <a href="form_veiculo.php?id='.$row['cod'].'">Editar</a>
                             </td>
                             <td class="text-center">
-                                <a href="crud_veiculo.php?op=excluir&id='.$row['cod'].'">Excluir</a>
+                                <a href="salvar_veiculo.php?op=excluir&id='.$row['cod'].'">Excluir</a>
                             </td>
                         </tr>
                     ';

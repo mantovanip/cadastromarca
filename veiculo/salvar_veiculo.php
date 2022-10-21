@@ -1,14 +1,14 @@
 <?php
 #Verifica e armazena as variaveis via POST OU GET
 $id = isset($_POST['id']) ? $_POST['id'] : $_GET['id'];
-$op = isset($_POST['op']) ? $_POST['op'] : $_GET['op'];
+$opcao = isset($_POST['opcao']) ? $_POST['opcao'] : $_GET['opcao'];
 $nome_modelo = isset($_POST['nome_modelo']) ? $_POST['nome_modelo'] : '';
 $tipo_veiculo = isset($_POST['tipo_veiculo']) ? $_POST['tipo_veiculo'] : '';
 $tipo_combustivel = isset($_POST['tipo_combustivel']) ? $_POST['tipo_combustivel'] : '';
 $chassi = isset($_POST['chassi']) ? $_POST['chassi'] : '';
 
 
-$cilindrada = isset($_POST['cilindrada']) ? $_POST['cilindrada'] : '';
+$motorizacao = isset($_POST['motorizacao']) ? $_POST['motorizacao'] : '';
 
 $ano_fabricacao = isset($_POST['ano_fabricacao']) ? $_POST['ano_fabricacao'] : '';
 $ano = isset($_POST['ano']) ? $_POST['ano'] : '';
@@ -17,7 +17,7 @@ $ano = isset($_POST['ano']) ? $_POST['ano'] : '';
 $conexao = new PDO('mysql:host=localhost;port=3308;dbname=marcacarro;', 'root', '');
 
 #Executa o comando conforme oque estiver na variavel 'op'
-if ($op == 'inserir') {
+if ($opcao == 'inserir') {
     #Faz a validação dos dados
     if ($chassi == '' || is_bool($chassi) || is_null($chassi) || is_float($chassi)) {
         echo 'Erro: O campo chassi é inválido, verifique o valor digitado e tente novamente.';
@@ -38,16 +38,16 @@ if ($op == 'inserir') {
         echo 'Erro: O campo Ano Modelo é inválido.';
         exit;
     }
-    $sql = "INSERT INTO veiculo VALUES (DEFAULT,{$nome_modelo},{$tipo_veiculo},{$combustivel},'{$chassi}','{$cor}','{$potencia}','{$cilindrada}','{$lotacao}',{$ano_modelo},{$ano_fabricacao});";
+    $sql = "INSERT INTO veiculo VALUES (DEFAULT,{$nome_modelo},{$tipo_veiculo},{$tipo_combustivel},'{$chassi}','{$motorizacao}','{$ano_modelo}','{$ano_fabricacao}');";
     $mensagem = 'Salvo com sucesso.';
-} else if ($op == 'atualizar') {
+} else if ($opcao == 'atualizar') {
     if ($chassi == '') {
         echo 'Erro: O campo chassi é obrigatório';
         exit;
     }
-    $sql = "UPDATE veiculo SET modelo = {$nome_modelo}, tipo_veiculo = {$tipo_veiculo}, tipo_combustivel = {$tipo_combustivel}, chassi = '{$chassi}', cor = '{$cor}', potencia = '{$potencia}', cilindrada = '{$cilindrada}', lotacao = '{$lotacao}', ano_modelo = {$ano_modelo}, ano_fabricacao = {$ano_fabricacao} WHERE id = {$id};";
+    $sql = "UPDATE veiculo SET modelo = {$nome_modelo}, tipo = {$tipo_veiculo}, tipo = {$tipo_combustivel}, chassi = '{$chassi}',  motorizacao = '{$motorizacao}',ano = {$ano}, ano_fabricacao = {$ano_fabricacao} WHERE id = {$id};";
     $mensagem = 'Atualizado com sucesso.';
-} else if ($op == 'excluir') {
+} else if ($opcao == 'excluir') {
     $sql = "DELETE FROM veiculo WHERE id = {$id};";
     $mensagem = 'Excluído com sucesso.';
 } else {
