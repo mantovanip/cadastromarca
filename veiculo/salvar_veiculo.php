@@ -4,14 +4,14 @@ $id = isset($_POST['id']) ? $_POST['id'] : $_GET['id'];
 $op = isset($_POST['op']) ? $_POST['op'] : $_GET['op'];
 $nome_modelo = isset($_POST['nome_modelo']) ? $_POST['nome_modelo'] : '';
 $tipo_veiculo = isset($_POST['tipo_veiculo']) ? $_POST['tipo_veiculo'] : '';
-$combustivel = isset($_POST['combustivel']) ? $_POST['combustivel'] : '';
+$tipo_combustivel = isset($_POST['tipo_combustivel']) ? $_POST['tipo_combustivel'] : '';
 $chassi = isset($_POST['chassi']) ? $_POST['chassi'] : '';
 
 
 $cilindrada = isset($_POST['cilindrada']) ? $_POST['cilindrada'] : '';
 
 $ano_fabricacao = isset($_POST['ano_fabricacao']) ? $_POST['ano_fabricacao'] : '';
-$ano_modelo = isset($_POST['ano_modelo']) ? $_POST['ano_modelo'] : '';
+$ano = isset($_POST['ano']) ? $_POST['ano'] : '';
 
 #Armazena na variavel conexao a conexão com BD
 $conexao = new PDO('mysql:host=localhost;port=3308;dbname=marcacarro;', 'root', '');
@@ -22,30 +22,30 @@ if ($op == 'inserir') {
     if ($chassi == '' || is_bool($chassi) || is_null($chassi) || is_float($chassi)) {
         echo 'Erro: O campo chassi é inválido, verifique o valor digitado e tente novamente.';
         exit;
-    } else if ($modelo == '' || is_bool($modelo) || is_null($modelo) || is_float($modelo)) {
+    } else if ($nome_modelo == '' || is_bool($nome_modelo) || is_null($nome_modelo) || is_float($nome_modelo)) {
         echo 'Erro: O campo modelo é inválido.';
         exit;
     } else if ($tipo_veiculo == '' || is_bool($tipo_veiculo) || is_null($tipo_veiculo) || is_float($tipo_veiculo)) {
         echo 'Erro: O campo tipo é inválido.';
         exit;
-    } else if ($combustivel == '' || is_bool($combustivel) || is_null($combustivel) || is_float($combustivel)) {
+    } else if ($tipo_combustivel == '' || is_bool($tipo_combustivel) || is_null($tipo_combustivel) || is_float($tipo_combustivel)) {
         echo 'Erro: O campo combustivel é inválido.';
         exit;
     } else if ($ano_fabricacao == '' || is_bool($ano_fabricacao) || is_null($ano_fabricacao) || is_float($ano_fabricacao)) {
         echo 'Erro: O Ano Fabricação é inválido.';
         exit;
-    } else if ($ano_modelo == '' || is_bool($ano_modelo) || is_null($ano_modelo) || is_float($ano_modelo)) {
+    } else if ($ano == '' || is_bool($ano) || is_null($ano) || is_float($ano)) {
         echo 'Erro: O campo Ano Modelo é inválido.';
         exit;
     }
-    $sql = "INSERT INTO veiculo VALUES (DEFAULT,{$modelo},{$tipo_veiculo},{$combustivel},'{$chassi}','{$cor}','{$potencia}','{$cilindrada}','{$lotacao}',{$ano_modelo},{$ano_fabricacao});";
+    $sql = "INSERT INTO veiculo VALUES (DEFAULT,{$nome_modelo},{$tipo_veiculo},{$combustivel},'{$chassi}','{$cor}','{$potencia}','{$cilindrada}','{$lotacao}',{$ano_modelo},{$ano_fabricacao});";
     $mensagem = 'Salvo com sucesso.';
 } else if ($op == 'atualizar') {
     if ($chassi == '') {
         echo 'Erro: O campo chassi é obrigatório';
         exit;
     }
-    $sql = "UPDATE veiculo SET modelo = {$modelo}, tipo_veiculo = {$tipo_veiculo}, combustivel = {$combustivel}, chassi = '{$chassi}', cor = '{$cor}', potencia = '{$potencia}', cilindrada = '{$cilindrada}', lotacao = '{$lotacao}', ano_modelo = {$ano_modelo}, ano_fabricacao = {$ano_fabricacao} WHERE id = {$id};";
+    $sql = "UPDATE veiculo SET modelo = {$nome_modelo}, tipo_veiculo = {$tipo_veiculo}, tipo_combustivel = {$tipo_combustivel}, chassi = '{$chassi}', cor = '{$cor}', potencia = '{$potencia}', cilindrada = '{$cilindrada}', lotacao = '{$lotacao}', ano_modelo = {$ano_modelo}, ano_fabricacao = {$ano_fabricacao} WHERE id = {$id};";
     $mensagem = 'Atualizado com sucesso.';
 } else if ($op == 'excluir') {
     $sql = "DELETE FROM veiculo WHERE id = {$id};";
