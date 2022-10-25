@@ -1,6 +1,6 @@
 <?php
     $id = '';
-    $modelo = '';
+    $nome_modelo = '';
     $combustivel = '';
     $chassi = '';
     $motorizacao = '';
@@ -16,7 +16,7 @@
         $sql = "SELECT * FROM veiculo WHERE id = {$id}";
         $dataset = $conexao->query($sql);
         $rs = $dataset->fetch();
-        $modelo = $rs['modelo'];
+        $nome_modelo = $rs['nome_modelo'];
         $tipo_combustivel = $rs['tipo_combustivel'];
         $chassi = $rs['chassi'];
         $motorizacao = $rs['motorizacao'];
